@@ -1,4 +1,4 @@
-package com.palindrome.core.entity;
+package com.palindrome.core.domain;
 
 public class Player {
 
