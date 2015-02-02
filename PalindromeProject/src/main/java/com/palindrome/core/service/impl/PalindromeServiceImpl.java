@@ -8,7 +8,16 @@ import com.palindrome.core.service.PalindromeService;
 public class PalindromeServiceImpl implements PalindromeService {
 
 	public boolean checkPalindrome(String text) {
-		return false;
+		String input = text.replaceAll("\\s+", "");
+
+		StringBuffer buffer = new StringBuffer(input);
+		String reversedInput = buffer.reverse().toString();
+
+		if (reversedInput.equalsIgnoreCase(input)) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 }

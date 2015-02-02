@@ -1,4 +1,4 @@
-package com.palindrome.boot;
+package com.palindrome;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

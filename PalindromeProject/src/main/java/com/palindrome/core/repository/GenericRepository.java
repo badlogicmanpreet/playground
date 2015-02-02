@@ -1,17 +1,17 @@
 package com.palindrome.core.repository;
 
-import java.util.List;
+import java.util.ArrayList;
 
-public interface GenericRepository<E, K> {
+import com.palindrome.core.domain.Player;
 
-	void add(E entity);
+public interface GenericRepository {
 
-	void update(E entity);
+	Player findByName(String name);
 
-	void remove(E entity);
+	void storePlayer(Player player);
 
-	E find(K key);
+	boolean isHallOfFame(Player player);
 
-	List<E> list();
+	ArrayList<Player> getDataForHallOfFame();
 
 }

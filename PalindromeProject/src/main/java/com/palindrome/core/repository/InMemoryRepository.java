@@ -1,41 +1,47 @@
 package com.palindrome.core.repository;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Collections;
 
 import org.springframework.stereotype.Repository;
 
+import com.palindrome.core.domain.Player;
+
 @Repository
-public class InMemoryRepository<E, K> implements GenericRepository<E, K> {
+public class InMemoryRepository implements GenericRepository {
 
-	private List<E> entities = new ArrayList<E>();
-
-	@Override
-	public void add(E entity) {
-		entities.add(entity);
-	}
+	private ArrayList<Player> players = new ArrayList<Player>();
 
 	@Override
-	public void update(E entity) {
-		throw new UnsupportedOperationException("Not supported for InMemory Storage");
-	}
-
-	@Override
-	public void remove(E entity) {
-		entities.remove(entity);
-	}
-
-	@Override
-	public E find(K key) {
-		if (entities.isEmpty()) {
-			return null;
+	public Player findByName(String name) {
+		for (Player player : players) {
+			if (player.getName() != null && player.getName().equals(name)) {
+				return player;
+			}
 		}
-		return entities.get(0);
+		return null;
 	}
 
 	@Override
-	public List<E> list() {
-		return entities;
+	public void storePlayer(Player player) {
+		players.add(player);
+	}
+
+	@Override
+	public boolean isHallOfFame(Player player) {
+		if (players.size() >= 3) {
+			Collections.sort(players, new Player());
+			if (player.getScore() > players.get(0).getScore()) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	@Override
+	public ArrayList<Player> getDataForHallOfFame() {
+		Collections.sort(players, new Player());
+		return players;
 	}
 
 }
