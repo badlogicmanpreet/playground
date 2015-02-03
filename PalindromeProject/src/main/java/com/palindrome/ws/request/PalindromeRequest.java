@@ -1,5 +1,11 @@
 package com.palindrome.ws.request;
 
+/**
+ * 
+ * @author manpreet
+ * Request Object
+ */
+
 public class PalindromeRequest {
 
 	private String name;

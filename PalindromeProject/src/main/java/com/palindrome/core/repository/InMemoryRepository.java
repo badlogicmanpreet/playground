@@ -7,6 +7,13 @@ import org.springframework.stereotype.Repository;
 
 import com.palindrome.core.domain.Player;
 
+/**
+ * 
+ * @author manpreet
+ *
+ * In memory implementation of Repository
+ */
+
 @Repository
 public class InMemoryRepository implements GenericRepository {
 
@@ -29,12 +36,9 @@ public class InMemoryRepository implements GenericRepository {
 
 	@Override
 	public boolean isHallOfFame(Player player) {
-		System.out.println("Player Size" + players.size());
 		if (players.size() >= 3) {
 			Collections.sort(players, new Player());
-			//if (player.getScore() >= players.get(0).getScore()) {
-				return true;
-			//}
+			return true;
 		}
 		return false;
 	}

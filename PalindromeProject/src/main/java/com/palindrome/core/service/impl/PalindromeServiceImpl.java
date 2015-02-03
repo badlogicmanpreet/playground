@@ -4,12 +4,20 @@ import org.springframework.stereotype.Service;
 
 import com.palindrome.core.service.PalindromeService;
 
+/**
+ * 
+ * @author manpreet
+ * 
+ * Palindrome Algo
+ */
+
 @Service
 public class PalindromeServiceImpl implements PalindromeService {
 
 	private int count;
 	private char[] ch;
 
+	// check if text is palindrome
 	public boolean checkPalindrome(String text) {
 		String input = text.replaceAll("[\\s\\-_?,.!']", "");
 
@@ -23,11 +31,13 @@ public class PalindromeServiceImpl implements PalindromeService {
 		}
 	}
 
+	// set capacity for char array to hold the text
 	private void setCapacity(int capacity) {
 		ch = new char[capacity];
 		count = capacity;
 	}
 
+	// reverse the given text
 	private String reverseMe(String text) {
 		char[] textArray = text.toCharArray();
 		int n = count - 1;

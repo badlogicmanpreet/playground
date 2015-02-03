@@ -2,6 +2,7 @@ package com.palindrome;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 
+import org.apache.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,8 +12,17 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
+/**
+ * 
+ * @author manpreet
+ *
+ * Test case for Palindrome Game
+ */
+
 @RunWith(SpringJUnit4ClassRunner.class)
 public class PalindromeControllerTest extends PalindromeProjectApplicationTests {
+
+	private static final Logger logger = Logger.getLogger(PalindromeControllerTest.class);
 
 	private MockMvc mockMvc;
 
@@ -24,29 +34,24 @@ public class PalindromeControllerTest extends PalindromeProjectApplicationTests 
 	@Test
 	public void playForPalindrome() throws Exception {
 		MvcResult result = this.mockMvc.perform(get("/palindrome/play?name=Manpreet&text=Madam, I'm Adam")).andExpect(MockMvcResultMatchers.status().isOk()).andReturn();
-		System.out.println("Result for test playForPalindrome ==> " + result.getResponse().getContentAsString());
+		logger.info("Result for test playForPalindrome ==> " + result.getResponse().getContentAsString());
 	}
 
 	@Test
 	public void playForNotPalindrome() throws Exception {
 		MvcResult result = this.mockMvc.perform(get("/palindrome/play?name=Manpreet&text=Able was I")).andExpect(MockMvcResultMatchers.status().isOk()).andReturn();
-		System.out.println("Result for test playForNotPalindrome ==> " + result.getResponse().getContentAsString());
+		logger.info("Result for test playForNotPalindrome ==> " + result.getResponse().getContentAsString());
 	}
 
 	@Test
 	public void playForHallOfFame() throws Exception {
 		this.mockMvc.perform(get("/palindrome/play?name=Manpreet&text=Able was I")).andExpect(MockMvcResultMatchers.status().isOk());
-		Thread.sleep(1000);
 		this.mockMvc.perform(get("/palindrome/play?name=ManpreetSingh&text=Poor Dan is in a droop")).andExpect(MockMvcResultMatchers.status().isOk());
-		Thread.sleep(1000);
 		this.mockMvc.perform(get("/palindrome/play?name=Mandy&text=Do geese see God?")).andExpect(MockMvcResultMatchers.status().isOk());
-		Thread.sleep(1000);
 		this.mockMvc.perform(get("/palindrome/play?name=ManpreetSingh&text=Hello Just testing")).andExpect(MockMvcResultMatchers.status().isOk());
-		Thread.sleep(1000);
 		this.mockMvc.perform(get("/palindrome/play?name=Mandy&text=Madam, I'm Adam")).andExpect(MockMvcResultMatchers.status().isOk());
-		Thread.sleep(10000);
 		MvcResult result = this.mockMvc.perform(get("/palindrome/play?name=Manpreet&text=Poor Dan is in a droop")).andExpect(MockMvcResultMatchers.status().isOk()).andReturn();
-		System.out.println("Result for test playForHallOfFame ==> " + result.getResponse().getContentAsString());
+		logger.info("Result for test playForHallOfFame ==> " + result.getResponse().getContentAsString());
 	}
 
 	@Test

@@ -2,6 +2,13 @@ package com.palindrome.core.domain;
 
 import java.util.Comparator;
 
+/**
+ * 
+ * @author manpreet
+ * 
+ * Player
+ */
+
 public class Player implements Comparator<Player>, Comparable<Player> {
 
 	private String name;

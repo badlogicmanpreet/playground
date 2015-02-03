@@ -4,6 +4,12 @@ import java.util.ArrayList;
 
 import com.palindrome.core.domain.Player;
 
+/**
+ * 
+ * @author manpreet
+ * Response Object
+ */
+
 public class PalindromeResponse {
 
 	private String name;
